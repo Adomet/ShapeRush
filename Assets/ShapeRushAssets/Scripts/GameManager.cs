@@ -82,8 +82,8 @@ public class GameManager : MonoBehaviour
     {
 
         levelNumber = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt("LevelNumber", levelNumber);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("LevelNumber", levelNumber+1);
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex+1));
     }
 
     public void StartScene(int sceneint)
@@ -161,15 +161,14 @@ public class GameManager : MonoBehaviour
     //Make game Over UI objects active
     public void WinGame()
     {
-        levelNumber++;
         PlayerPrefs.SetString("InputToggle",(InputToggle.isOn).ToString());
         PlayerPrefs.SetString("AutoPlayToggle", (AutoPlayToggle.isOn).ToString());
         PlayerPrefs.SetString("LockToggle", (LockToggle.isOn).ToString());
-        PlayerPrefs.SetInt("LevelNumber", levelNumber);
+        PlayerPrefs.SetInt("LevelNumber", levelNumber+1);
 
 
 
-
+        if(windGameSceneObjects!=null)
         windGameSceneObjects.SetActive(true);
         Player.GetComponent<PlayerController>().speed = 0;
         isGameOver = true;

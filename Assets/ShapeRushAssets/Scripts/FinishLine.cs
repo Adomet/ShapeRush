@@ -25,7 +25,7 @@ public class FinishLine : MonoBehaviour
 
     void LoadNextLevel()
     {
-        GameManager.Instance.StartScene(GameManager.Instance.levelNumber);
+        GameManager.Instance.StartScene(GameManager.Instance.levelNumber+1);
     }
 
 }
